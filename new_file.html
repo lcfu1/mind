@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap 实例</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/popper.min.js"></script>
+		<script src="./js/bootstrap.min.js"></script>
+		<script src="./js/photoviewer.min.js"></script>
+		<link href="./css/photoviewer.min.css" rel="stylesheet">
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<link href="./css/mind.css" />
+		<script src="./js/mind.js"></script>
+	</head>
+	<body>
+
+		<div class="jumbotron" style="background-image:linear-gradient(135deg,#fd8008,#fc0107);">
+			<h1 class="text-center text-white">My Mind</h1>
+			<p class="text-center text-white">lcfu1</p>
+			<div class="d-flex flex-row-reverse">
+			    <div>
+					<div class="dropdown">
+						<button id="select" type="button" class="btn btn-default dropdown-toggle text-white" data-toggle="dropdown">全部</button>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="#">全部</a>
+							<a class="dropdown-item" href="#">android</a>
+							<a class="dropdown-item" href="#">kotlin</a>
+						</div>
+					</div>
+				</div>
+				<div><button id="about" type="button" class="btn btn-default text-white">about</button></div>
+			</div>
+
+		</div>
+		<div class="container">
+			<div class="card-columns image-set">
+			</div>
+		</div>
+	</body>
+</html>

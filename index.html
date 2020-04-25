@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap 实例</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/popper.min.js"></script>
+		<script src="./js/bootstrap.min.js"></script>
+		<script src="./js/photoviewer.min.js"></script>
+		<link href="./css/photoviewer.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link href="./css/mind.css" />
+	</head>
+	<body>
+
+		<div class="jumbotron text-center">
+			<h1>我的第一个 Bootstrap 页面</h1>
+			<p>重置浏览器大小查看效果!</p>
+			<div class="dropdown">
+			    <button id="select" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			      分类
+			    </button>
+			    <div class="dropdown-menu dropdown-menu-right">
+			      <a class="dropdown-item" href="#">全部</a>
+			      <a class="dropdown-item" href="#">Link 2</a>
+			      <a class="dropdown-item" href="#">Link 3</a>
+			    </div>
+			  </div>
+			  
+		</div>
+
+		<div class="container">
+			<div class="card-columns">
+				
+				
+				
+				
+				<div class="card image-set">
+					<a data-gallery="manual" href="img/sql server.svg">
+						<img style="min-height: 180px;max-height: 220px;" src="img/sql server.svg" class="card-img-top" alt="加载出错">
+					</a>
+					<div class="card-body border-top">
+						<p class="card-text">Torting text below as a natural lead-in to additional content. This content is a little bit
+							longer.</p>
+					</div>
+				</div>
+				
+				<div class="card image-set">
+					<a data-gallery="manual" href="img/sql server.svg">
+						<img style="min-height: 180px;max-height: 220px;" src="img/sql server.svg" class="card-img-top" alt="加载出错">
+					</a>
+					<div class="card-body border-top">
+						<p class="card-text">Torting text below as a natural lead-in to additional content. This content is a little bit
+							longer.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+<script>
+	$(".dropdown-item").click(function(e){
+		$("#select").text($(this).text());
+		var a="<div class='card image-set'><a data-gallery='manual' href='img/sql server.svg'><img style='min-height: 180px;max-height: 220px;' src='img/sql server.svg' class='card-img-top' alt='加载出错'></a><div class='card-body border-top'><p class='card-text'>Torting</p></div></div>";
+		$(".card-columns").append(a)
+	});
+	
+	// initialize manually with a list of links
+	$('[data-gallery=manual]').click(function(e) {
+
+		e.preventDefault();
+
+		var items = [];
+		$('[data-gallery=manual]').each(function() {
+			items.push({
+				src: $(this).attr('href'),
+				title: $(this).attr('data-title'),
+				xmindsrc: $(this).attr('href').replace("img", "xmind").replace("svg", "xmind"),
+				pdfsrc: $(this).attr('href').replace("img", "pdf").replace("svg", "pdf"),
+			});
+		});
+
+		var options = {
+			index: items.findIndex(x => x.src === $(this).attr('href')),
+			initMaximized: true,
+			headToolbar: ['zoomIn', 'zoomOut', 'actualSize', 'maximize', 'close'],
+		};
+
+		new PhotoViewer(items, options);
+
+		var index = items.findIndex(x => x.src === $(this).attr('href'));
+		$(".xmind").click(function() {
+			console.log(index);
+			alert(items[index].xmindsrc);
+		});
+
+		$(".pdf").click(function() {
+			alert(items[index].pdfsrc);
+		});
+
+	});
+</script>
